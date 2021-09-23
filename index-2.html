@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0">
+</head>
+
+<body>
+    <form name="leads">
+        <input type="hidden" name="date of call" id="dateandtime">
+        <input type="text" name="Full Name" placeholder="Name" id="name">
+        <input type="tel" name="Phone" placeholder="Phone No" id="phone">
+        <button type="submit">Send</button>
+        
+    </form>
+    
+    <button onclick="setUserAgent()">UserAgent</button>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzNAT2DYIed1MDANo1KJvSTIOIGyk1bVuR_dSBivKUYiuF2VQvVktkP4NTLXrMNBccUVw/exec'
+        const form = document.forms['leads']
+
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, {
+                    method: 'POST',
+                    body: new FormData(form)
+                })
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+            if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                    //alert("Browser is Safari -- we get an error, but the form still submits -- continue.");
+                    console.log("test-lead");               
+                }
+        })
+
+        var duplicatedate = new Date().toLocaleString();
+        document.getElementById("dateandtime").value = duplicatedate;
+            
+        /*
+        function setUserAgent(window, userAgent) {
+            // Works on Firefox, Chrome, Opera and IE9+
+            if (navigator.__defineGetter__) {
+                navigator.__defineGetter__('userAgent', function() {
+                    return userAgent;
+                });
+            } else if (Object.defineProperty) {
+                Object.defineProperty(navigator, 'userAgent', {
+                    get: function() {
+                        return userAgent;
+                    }
+                });
+            }
+            // Works on Safari
+            if (window.navigator.userAgent !== userAgent) {
+                var userAgentProp = {
+                    get: function() {
+                        return userAgent;
+                    }
+                };
+                try {
+                    Object.defineProperty(window.navigator, 'userAgent', userAgentProp);
+                } catch (e) {
+                    window.navigator = Object.create(navigator, {
+                        userAgent: userAgentProp
+                    });
+                }
+            }
+        }*/
+
+    </script>
+</body>
+
+</html>
+
+<!-- allimune bot integration to google sheet -->
+<!-- https://script.google.com/macros/s/AKfycbyCKEdW4_68GwYeRhJOrRvhm-PwIWeLGwD1-fFXWGD2G8KRaLJIBgtqv_3p8WACa3BgJw/exec -->
