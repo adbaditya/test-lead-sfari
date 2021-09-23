@@ -30,14 +30,18 @@
                 })
                 .then(response => console.log('Success!', response))
                 .catch(error => console.error('Error!', error.message))
-            if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
-                    //alert("Browser is Safari -- we get an error, but the form still submits -- continue.");
-                    console.log("test-lead");               
-                }
+            
         })
 
         var duplicatedate = new Date().toLocaleString();
         document.getElementById("dateandtime").value = duplicatedate;
+        
+        /*
+            if (navigator.userAgent.search("Safari") >= 0 && navigator.userAgent.search("Chrome") < 0) {
+                    //alert("Browser is Safari -- we get an error, but the form still submits -- continue.");
+                    console.log("test-lead");               
+                }
+        */
             
         /*
         function setUserAgent(window, userAgent) {
