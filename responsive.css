@@ -1,0 +1,5 @@
+@media screen and (max-height: 600px) {
+    #myLandbot {
+        height: 60vh!important;
+    }
+}
